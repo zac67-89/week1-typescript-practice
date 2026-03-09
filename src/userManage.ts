@@ -14,8 +14,10 @@ function listUsers(): User[] {
   return users;
 }
 
-function deleteUser(id: number): void {
+function deleteUser(id: number): boolean {
+  const initialLength = users.length;
   users = users.filter((user) => user.id !== id);
+  return users.length < initialLength;
 }
 
 addUser({ id: 1, name: "Alice" });
